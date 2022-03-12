@@ -40,7 +40,7 @@ public class XML {
                     int arrivaltime = Integer.parseInt(element.getElementsByTagName("arrivaltime").item(0).getTextContent());
                     int servicetime = Integer.parseInt(element.getElementsByTagName("servicetime").item(0).getTextContent());
 
-                    System.out.println("pid: " + pid + " arrivaltime: " + arrivaltime + " servicetime: " + servicetime);
+                    //System.out.println("pid: " + pid + " arrivaltime: " + arrivaltime + " servicetime: " + servicetime);
 
                     processes.add(new Process(pid, arrivaltime, servicetime));
                 }
