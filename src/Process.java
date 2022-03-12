@@ -6,7 +6,7 @@ public class Process {
     private int endtime;
     private int tat;
     private double normtat;
-    private int waittime;
+    private int waittime = 0;
 
     public Process(int pid, int arrivaltime, int servicetime) {
         this.pid = pid;

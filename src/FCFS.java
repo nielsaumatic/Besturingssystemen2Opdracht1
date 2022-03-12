@@ -23,7 +23,10 @@ public class FCFS extends Scheduler{
         }
 
         for (Process process : getScheduled()) {
-            process.setWaittime(process.getStarttime() - process.getArrivaltime());
+            if (process.getStarttime() > process.getArrivaltime()){
+                process.setWaittime(process.getStarttime() - process.getArrivaltime());
+            }
+
             process.setTat(process.getWaittime() + process.getServicetime());
             process.setNormtat(process.getTat() / (double) process.getServicetime());
         }
