@@ -1,2 +1,7 @@
 # Project exclude paths
 /out/
+/processen10000.xml
+/processen20000.xml
+/processen50000.xml
+/Opdracht 1.iml
+/.idea/
