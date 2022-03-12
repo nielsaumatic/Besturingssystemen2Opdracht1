@@ -1,7 +1,7 @@
 public class Process {
-    private int pid;
-    private int arrivaltime;
-    private int servicetime;
+    private final int pid;
+    private final int arrivaltime;
+    private final int servicetime;
     private int starttime;
     private int endtime;
     private int tat;
@@ -24,6 +24,11 @@ public class Process {
 
     public int getServicetime() {
         return servicetime;
+    }
+
+    public void setStartAndEnd(int starttime, int endtime) {
+        this.starttime = starttime;
+        this.endtime = endtime;
     }
 
     public int getStarttime() {

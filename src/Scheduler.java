@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Scheduler {
+public abstract class Scheduler {
     protected final List<Process> processes;
     protected final List<Process> scheduled;
     protected int timeslice;
@@ -35,4 +35,6 @@ public class Scheduler {
     public Process getLastScheduled() {
         return scheduled.get(scheduled.size() - 1);
     }
+
+    public abstract void schedule();
 }
