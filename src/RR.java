@@ -19,10 +19,13 @@ public class RR extends  Scheduler{
 
         while (!processesNotFinished.isEmpty()) {
             Process process = processesNotFinished.get(0);
+            if(process.getArrivaltime() > time){
+                time = process.getArrivaltime();
+            }
             int ts = Math.min(process.getServicetime(), timeslice);
             Process originalProcess = this.getProcess(process.getPid());
 
-            if (process.getStarttime() == 0) {
+            if (originalProcess.getStarttime() == 0) {
                 originalProcess.setStartAndEnd(time, time + ts);
             }
             else {
@@ -47,6 +50,10 @@ public class RR extends  Scheduler{
             }
         }
 
-
+        for (Process process: processes) {
+            process.setWaittime(process.getEndtime() - process.getServicetime() - process.getArrivaltime());
+            process.setTat(process.getWaittime() + process.getServicetime());
+            process.setNormtat(process.getTat() / (double) process.getServicetime());
+        }
     }
 }
