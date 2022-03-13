@@ -30,19 +30,8 @@ public class SJF extends Scheduler{
             }
             //
 
-            Collections.sort(available, (Process p1, Process p2) -> {
-                if (((Process) p1).getServicetime() == ((Process) p2).getServicetime())
-                {
-                    return 0;
-                }
-                else if (((Process) p1).getServicetime() < ((Process) p2).getServicetime())
-                {
-                    return -1;
-                }
-                else
-                {
-                    return 1;
-                }
+            available.sort((Process p1, Process p2) -> {
+                return Integer.compare(p1.getServicetime(), p2.getServicetime());
             });
 
             Process process = available.get(0);
