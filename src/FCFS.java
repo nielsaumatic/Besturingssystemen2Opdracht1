@@ -10,7 +10,7 @@ public class FCFS extends Scheduler{
     public void schedule() {
         List<Process> scheduled = getScheduled();
 
-        for (Process process: getProcesses()) {
+        for (Process process: processes) {
             if (scheduled.isEmpty()) {
                 process.setStartAndEnd(process.getArrivaltime(), process.getArrivaltime() + process.getServicetime());
                 scheduled.add(process);

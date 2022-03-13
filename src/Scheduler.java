@@ -8,8 +8,8 @@ public abstract class Scheduler {
 
     public Scheduler(List<Process> processes) {
         this.processes = new ArrayList<>();
-        for (Process p: processes) {
-            this.processes.add(new Process(p.getPid(), p.getArrivaltime(), p.getServicetime()));
+        for (Process process: processes) {
+            this.processes.add(new Process(process.getPid(), process.getArrivaltime(), process.getServicetime()));
         }
 
         this.scheduled = new ArrayList<>();
@@ -34,6 +34,15 @@ public abstract class Scheduler {
 
     public Process getLastScheduled() {
         return scheduled.get(scheduled.size() - 1);
+    }
+
+    public Process getProcess(int pid) {
+        for (Process process: processes) {
+            if (process.getPid() == pid) {
+                return process;
+            }
+        }
+        return  null;
     }
 
     public abstract void schedule();
