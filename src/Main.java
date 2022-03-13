@@ -12,6 +12,10 @@ public class Main {
         sjf.schedule();
         System.out.println();
 
+        Scheduler srt = new SRT(processes);
+        srt.schedule();
+        System.out.println();
+
         Scheduler RR = new RR(processes);
         RR.schedule();
         System.out.println();

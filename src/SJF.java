@@ -12,34 +12,34 @@ public class SJF extends Scheduler{
     @Override
     public void schedule(){
         List<Process> scheduled = getScheduled();
-        List<Process> processen = getProcesses();
-        int endtime = processen.get(0).getArrivaltime();
+        List<Process> processes = getProcesses();
+        int time = processes.get(0).getArrivaltime();
 
-        while(!processen.isEmpty()){
+        while(!processes.isEmpty()){
             List<Process> available = new ArrayList<>();
 
-            for(Process process : processen){
-                if(process.getArrivaltime() <= endtime){
+            for(Process process : processes){
+                if(process.getArrivaltime() <= time){
                     available.add(process);
                 }
             }
 
             //Als er geen processen in de wachtrij staan skip dan direct naar het punt dat de volgende toekomt
             if(available.isEmpty()){
-                available.add(processen.get(0));
-                endtime = processen.get(0).getArrivaltime();
+                available.add(processes.get(0));
+                time = processes.get(0).getArrivaltime();
             }
 
             available.sort(Comparator.comparingInt(Process::getServicetime));
 
             Process process = available.get(0);
-            process.setStartAndEnd(endtime, endtime + process.getServicetime());
+            process.setStartAndEnd(time, time + process.getServicetime());
             scheduled.add(process);
-            endtime += process.getServicetime();
+            time += process.getServicetime();
 
-            for(Process processed : processen){
+            for(Process processed : processes){
                 if(processed.getPid() == process.getPid()){
-                    processen.remove(processed);
+                    processes.remove(processed);
                     break;
                 }
             }
