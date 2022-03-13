@@ -8,8 +8,6 @@ public class FCFS extends Scheduler{
 
     @Override
     public void schedule() {
-        List<Process> scheduled = getScheduled();
-
         for (Process process: processes) {
             if (scheduled.isEmpty()) {
                 process.setStartAndEnd(process.getArrivaltime(), process.getArrivaltime() + process.getServicetime());
@@ -22,11 +20,10 @@ public class FCFS extends Scheduler{
             }
         }
 
-        for (Process process : getScheduled()) {
+        for (Process process : scheduled) {
             if (process.getStarttime() > process.getArrivaltime()){
                 process.setWaittime(process.getStarttime() - process.getArrivaltime());
             }
-
             process.setTat(process.getWaittime() + process.getServicetime());
             process.setNormtat(process.getTat() / (double) process.getServicetime());
         }

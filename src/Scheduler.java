@@ -16,20 +16,8 @@ public abstract class Scheduler {
         this.timeslice = 1;
     }
 
-    public List<Process> getProcesses() {
-        return processes;
-    }
-
-    public List<Process> getScheduled() {
-        return scheduled;
-    }
-
     public void setTimeslice(int timeslice) {
         this.timeslice = timeslice;
-    }
-
-    public int getTimeslice() {
-        return timeslice;
     }
 
     public Process getLastScheduled() {

@@ -11,8 +11,6 @@ public class SJF extends Scheduler{
 
     @Override
     public void schedule(){
-        List<Process> scheduled = getScheduled();
-        List<Process> processes = getProcesses();
         int time = processes.get(0).getArrivaltime();
 
         while(!processes.isEmpty()){
@@ -45,7 +43,7 @@ public class SJF extends Scheduler{
             }
         }
 
-        for (Process process : getScheduled()) {
+        for (Process process : scheduled) {
             if (process.getStarttime() > process.getArrivaltime()){
                 process.setWaittime(process.getStarttime() - process.getArrivaltime());
             }
