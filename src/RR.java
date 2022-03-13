@@ -10,15 +10,15 @@ public class RR extends  Scheduler{
     @Override
     public void schedule() {
 
-        List<Process> processesNotFinished = new ArrayList<>();
+        List<Process> scheduled = this.getScheduled();
         for (Process process: processes) {
-            processesNotFinished.add(new Process(process.getPid(), process.getArrivaltime(), process.getServicetime()));
+            scheduled.add(new Process(process.getPid(), process.getArrivaltime(), process.getServicetime()));
         }
-        int time = processesNotFinished.get(0).getArrivaltime();
+        int time = scheduled.get(0).getArrivaltime();
 
 
-        while (!processesNotFinished.isEmpty()) {
-            Process process = processesNotFinished.get(0);
+        while (!scheduled.isEmpty()) {
+            Process process = scheduled.get(0);
             if(process.getArrivaltime() > time){
                 time = process.getArrivaltime();
             }
@@ -32,18 +32,18 @@ public class RR extends  Scheduler{
                 originalProcess.setEndtime(time + ts);
             }
             time += ts;
-            processesNotFinished.remove(0);
+            scheduled.remove(0);
 
             if (process.getServicetime() > timeslice) {
                 process.setServicetime(process.getServicetime() - timeslice);
 
-                for (int i = 0; i < processesNotFinished.size(); i++) {
-                    if(processesNotFinished.get(i).getArrivaltime() > time) {
-                        processesNotFinished.add(i, process);
+                for (int i = 0; i < scheduled.size(); i++) {
+                    if(scheduled.get(i).getArrivaltime() > time) {
+                        scheduled.add(i, process);
                         break;
                     }
                     else if (i == processes.size() - 1) {
-                        processesNotFinished.add(process);
+                        scheduled.add(process);
                         break;
                     }
                 }

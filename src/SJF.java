@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class SJF extends Scheduler{
@@ -28,20 +29,17 @@ public class SJF extends Scheduler{
                 available.add(processen.get(0));
                 endtime = processen.get(0).getArrivaltime();
             }
-            //
 
-            available.sort((Process p1, Process p2) -> {
-                return Integer.compare(p1.getServicetime(), p2.getServicetime());
-            });
+            available.sort(Comparator.comparingInt(Process::getServicetime));
 
             Process process = available.get(0);
             process.setStartAndEnd(endtime, endtime + process.getServicetime());
             scheduled.add(process);
             endtime += process.getServicetime();
 
-            for(Process processd : processen){
-                if(processd.getPid() == process.getPid()){
-                    processen.remove(processd);
+            for(Process processed : processen){
+                if(processed.getPid() == process.getPid()){
+                    processen.remove(processed);
                     break;
                 }
             }
