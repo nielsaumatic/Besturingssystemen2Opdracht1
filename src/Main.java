@@ -8,8 +8,8 @@ public class Main {
         fcfs.schedule();
         System.out.println();
 
-        Scheduler jsf = new JSF(processes);
-        jsf.schedule();
+        Scheduler sjf = new SJF(processes);
+        sjf.schedule();
         System.out.println();
 
         Scheduler RR = new RR(processes);

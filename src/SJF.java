@@ -2,9 +2,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class JSF extends Scheduler{
+public class SJF extends Scheduler{
 
-    public JSF(List<Process> processes) {
+    public SJF(List<Process> processes) {
         super(processes);
     }
 
