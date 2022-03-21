@@ -15,7 +15,12 @@ public class FCFS extends Scheduler{
             }
             else {
                 Process prevProcess = this.getLastScheduled();
-                process.setStartAndEnd(prevProcess.getEndtime(), prevProcess.getEndtime() + process.getServicetime());
+                if (process.getArrivaltime() > prevProcess.getEndtime()) {
+                    process.setStartAndEnd(process.getArrivaltime(), process.getArrivaltime() + process.getServicetime());
+                }
+                else {
+                    process.setStartAndEnd(prevProcess.getEndtime(), prevProcess.getEndtime() + process.getServicetime());
+                }
                 scheduled.add(process);
             }
         }
