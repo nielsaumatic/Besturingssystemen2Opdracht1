@@ -31,6 +31,10 @@ public class Main {
         rr8.schedule();
         CSV.exportCSV("rr8", rr8);
 
+        Scheduler hrrn = new HRRN(processes);
+        hrrn.schedule();
+        CSV.exportCSV("hrrn", hrrn);
+
         Scheduler mlfb25 = new MLFB(processes);
         mlfb25.setTimeslice(25);
         mlfb25.schedule();
