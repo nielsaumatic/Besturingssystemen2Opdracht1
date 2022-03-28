@@ -46,5 +46,21 @@ public abstract class Scheduler {
         return  null;
     }
 
+    public double getAverageNormTAT() {
+        double totaal = 0;
+        for (Process p: scheduled) {
+            totaal += p.getNormtat();
+        }
+        return totaal / scheduled.size();
+    }
+
+    public double getAverageWait() {
+        double totaal = 0;
+        for (Process p: scheduled) {
+            totaal += p.getWaittime();
+        }
+        return totaal / scheduled.size();
+    }
+
     public abstract void schedule();
 }
