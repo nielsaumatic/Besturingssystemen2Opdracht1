@@ -62,5 +62,13 @@ public abstract class Scheduler {
         return totaal / scheduled.size();
     }
 
+    public double getAverageTat() {
+        double totaal = 0;
+        for (Process p: scheduled) {
+            totaal += p.getTat();
+        }
+        return totaal / scheduled.size();
+    }
+
     public abstract void schedule();
 }
