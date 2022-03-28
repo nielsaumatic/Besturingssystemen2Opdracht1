@@ -56,6 +56,14 @@ public class Main {
         System.out.println("Average tat hrrn: " + hrrn.getAverageTat());
         CSV.exportCSV("hrrn", hrrn);
 
+        Scheduler mlfb5 = new MLFB(processes);
+        mlfb5.setTimeslice(5);
+        mlfb5.schedule();
+        System.out.println("Average norm tat mlfb5: " + mlfb5.getAverageNormTAT());
+        System.out.println("Average wait mlfb5: " + mlfb5.getAverageWait());
+        System.out.println("Average tat mlfb5: " + mlfb5.getAverageTat());
+        CSV.exportCSV("mlfb5", mlfb5);
+
         Scheduler mlfb25 = new MLFB(processes);
         mlfb25.setTimeslice(25);
         mlfb25.schedule();
@@ -64,12 +72,5 @@ public class Main {
         System.out.println("Average tat mlfb25: " + mlfb25.getAverageTat());
         CSV.exportCSV("mlfb25", mlfb25);
 
-        Scheduler mlfb50 = new MLFB(processes);
-        mlfb50.setTimeslice(50);
-        mlfb50.schedule();
-        System.out.println("Average norm tat mlfb50: " + mlfb50.getAverageNormTAT());
-        System.out.println("Average wait mlfb50: " + mlfb50.getAverageWait());
-        System.out.println("Average tat mlfb50: " + mlfb50.getAverageTat());
-        CSV.exportCSV("mlfb50", mlfb50);
     }
 }
