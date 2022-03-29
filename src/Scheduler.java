@@ -28,15 +28,6 @@ public abstract class Scheduler {
         return scheduled.get(scheduled.size() - 1);
     }
 
-    public Process getProcessInProcesses(int pid) {
-        for (Process process: processes) {
-            if (process.getPid() == pid) {
-                return process;
-            }
-        }
-        return  null;
-    }
-
     public Process getProcessInScheduled(int pid) {
         for (Process process: scheduled) {
             if (process.getPid() == pid) {
